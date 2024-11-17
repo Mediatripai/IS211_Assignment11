@@ -1,0 +1,114 @@
+/* Base dark theme */
+body {
+    background-color: #1a1b26;
+    color: #a9b1d6;
+    transition: all 0.3s ease;
+}
+
+.box {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: none; /* Removed box shadow */
+    background-color: linear-gradient(to bottom, #2e2f45, #1a1b26); /* Add gradient for header and boxes */
+}
+
+/* Header styling */
+.title {
+    color: #bb9af7;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* Input fields styling */
+input.input,
+.select select {
+    background-color: transparent; /* Removed background color for inputs and selects */
+    color: white;
+    border: 1px solid #414868;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+input.input:focus,
+.select select:focus {
+    border-color: #7aa2f7;
+    box-shadow: inset -4px 0 4px rgba(122, 162, 247, 0.5), inset 4px 0 4px rgba(122, 162, 247, 0.5);
+    outline: none;
+}
+
+input.input::placeholder {
+    color: #c0caf5; /* Darker placeholder color */
+}
+
+/* Select dropdown styling */
+.select select {
+    appearance: none;
+    padding-right: 30px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237aa2f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right center; /* Center align arrow */
+    background-size: 16px;
+}
+
+/* Button styling */
+button,
+.button {
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover,
+.button:hover {
+    background-color: #8b5cf6;
+    transform: translateY(-2px);
+    box-shadow: inset -4px 0 4px rgba(124, 58, 237, 0), inset 4px 0 4px rgba(124, 58, 237, 0);
+}
+
+/* Top buttons container */
+.buttons-container {
+    display: flex;
+    justify-content: flex-end; /* Simplified alignment class */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Icon buttons */
+.icon-button {
+    color: #7aa2f7;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.icon-button:hover {
+    background-color: rgba(122, 162, 247, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Empty state message */
+.empty-message {
+    color: #565f89;
+    text-align: center;
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* Add Task button specific styling */
+.add-task-button {
+    background-color: #9d4edd;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.add-task-button:hover {
+    background-color: #a854e7;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            background-color: {{ 'black' if theme == 'dark' else 'white' }};
+            color: {{ 'white' if theme == 'dark' else 'black' }};
+        }
+        .box {
+            background-color: {{ '#222' if theme == 'dark' else '#f5f5f5' }};
+            color: inherit;
+        }
+        .button.is-dark-mode {
+            background-color: {{ '#333' if theme == 'dark' else '#ddd' }};
+            color: {{ 'white' if theme == 'dark' else 'black' }};
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="box">
+                <h1 class="title has-text-centered">Task Manager</h1>
+                <form action="/submit" method="post">
+                    <div class="field">
+                        <label for="task" class="label">Task</label>
+                        <div class="control">
+                            <input type="text" id="task" name="task" class="input" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="email" class="label">Email</label>
+                        <div class="control">
+                            <input type="email" id="email" name="email" class="input" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="priority" class="label">Priority</label>
+                        <div class="control">
+                            <div class="select">
+                                <select id="priority" name="priority" required>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-primary">Add Task</button>
+                    </div>
+                </form>
+                <br>
+                <div class="buttons">
+                    <form action="/clear" method="get" style="display:inline;">
+                        <button type="submit" class="button is-danger">Clear List</button>
+                    </form>
+                    <form action="/save" method="get" style="display:inline;">
+                        <button type="submit" class="button is-info">Save List</button>
+                    </form>
+                    <form action="/toggle-theme" method="get" style="display:inline;">
+                        <button type="submit" class="button is-dark-mode">Toggle Theme</button>
+                    </form>
+                </div>
+                <br>
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Email</th>
+                            <th>Priority</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in todo_list %}
+                        <tr>
+                            <td>{{ item.task }}</td>
+                            <td>{{ item.email }}</td>
+                            <td>{{ item.priority }}</td>
+                            <td>
+                                <form action="/delete/{{ loop.index0 }}" method="get" style="display:inline;">
+                                    <button type="submit" class="button is-danger is-light">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
